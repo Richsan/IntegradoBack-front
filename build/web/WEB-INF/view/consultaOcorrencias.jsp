@@ -7,6 +7,12 @@
         <title>Dados Abertos Governamentais</title>
         <link rel="stylesheet" type="text/css" href="resources/style.css">
         <link rel="stylesheet" type="text/css" href="resources/form.css">
+       
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
+        <script type="text/javascript" src="http://cdn3.devexpress.com/jslib/15.1.3/js/dx.chartjs.js"></script>
+        <script type="text/javascript" src="resources/pieChart.js"></script>
+ 
     </head>
 
 
@@ -58,9 +64,12 @@
                         <td>Exemplo1</td>
                         <td>Exemplo 2</td>
                     </tr>
+                 <tr id="pieChartContainer" style="height:250px; max-width:250px; margin: auto"></tr>
                 </table>
+                
             </form>
        </section>
+             
        </div>
     </body>
 </html>

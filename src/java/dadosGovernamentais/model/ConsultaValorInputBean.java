@@ -7,6 +7,7 @@ import java.util.Calendar;
 public class ConsultaValorInputBean
 {
 
+
     public ConsultaValorInputBean(String tipoLicitacao, Double valorMin,
             Double valorMax, Calendar dtInicio, Calendar dtFim) {
         this.tipoLicitacao = tipoLicitacao;

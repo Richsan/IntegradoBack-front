@@ -49,7 +49,6 @@ public class DadosGovernamentaisController
         }
         else
         {
-            
             mv.addObject("rows", 0);
         } 
         
