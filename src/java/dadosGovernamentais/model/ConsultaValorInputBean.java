@@ -7,7 +7,7 @@ import java.util.Calendar;
 public class ConsultaValorInputBean
 {
 
-    public ConsultaValorInputBean(Integer tipoLicitacao, Double valorMin,
+    public ConsultaValorInputBean(String tipoLicitacao, Double valorMin,
             Double valorMax, Calendar dtInicio, Calendar dtFim) {
         this.tipoLicitacao = tipoLicitacao;
         this.valorMin = valorMin;
@@ -22,19 +22,20 @@ public class ConsultaValorInputBean
         this.valorMax = null;
         this.dtInicio = null;
         this.dtFim = null;
-        this.tipoLicitacao = null;
+        this.tipoLicitacao = "";
     }
-    private Integer tipoLicitacao, page;
+    private Integer  page;
     private Double valorMin, valorMax;
     private Calendar dtInicio, dtFim;
+    private String tipoLicitacao;
 
    
-    public Integer getTipoLicitacao() {
+    public String getTipoLicitacao() {
         return tipoLicitacao;
     }
 
     
-    public void setTipoLicitacao(Integer tipoLicitacao) {
+    public void setTipoLicitacao(String tipoLicitacao) {
         this.tipoLicitacao = tipoLicitacao;
     }
 

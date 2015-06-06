@@ -54,7 +54,7 @@
                 <select for="consultaValor" name="tipoLicitacao">
                   <option value="empty">Tipo de Licitacao</option>
                   <c:forEach items="${listaLicitacoes}" var="licitacao">                  
-                     <option value="${licitacao.getId()}">${licitacao.getDescricao()}</option>
+                     <option value="${licitacao.getDescricao()}">${licitacao.getDescricao()}</option>
                   </c:forEach>
                 </select>
 

@@ -33,7 +33,7 @@ public class ConsultaValorDAO
                         else
                             stmt.setInt(1,1);
                         stmt.setInt(2,7);
-                        stmt.setInt(3, consulta.getTipoLicitacao());
+                        stmt.setString(3, consulta.getTipoLicitacao());
                         stmt.setString(4, "20[0-1][1-5]");
                         stmt.setString(5, "[0-9][0-9][0-9][0-9].[0-9][0-9]");
 			rs = stmt.executeQuery();
@@ -73,7 +73,7 @@ public class ConsultaValorDAO
 		stmt = this.conn.prepareStatement(sqlQuery);
                 stmt.setInt(1, 2);
                 stmt.setInt(2, 0);
-                stmt.setInt(3, consulta.getTipoLicitacao());
+                stmt.setString(3, consulta.getTipoLicitacao());
                 stmt.setString(4, "20[0-1][1-5]");
                 stmt.setString(5, "[0-9][0-9][0-9][0-9].[0-9][0-9]");
                 rs = stmt.executeQuery();
