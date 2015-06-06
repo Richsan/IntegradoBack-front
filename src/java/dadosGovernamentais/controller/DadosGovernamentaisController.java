@@ -41,7 +41,7 @@ public class DadosGovernamentaisController
         TipoLicitacaoDAO tipoLicitacaoDAO = new TipoLicitacaoDAO(conexao);
         ArrayList<TipoLicitacao> listaLicitacoes = (ArrayList<TipoLicitacao>)tipoLicitacaoDAO.getListaLicitacoes();
        ;
-        if(input.getTipoLicitacao() != null)
+        if(input.getTipoLicitacao() != "")
         {   
             ArrayList<ConsultaValorOutputBean> searchResult = (ArrayList<ConsultaValorOutputBean>)dao.getSearchResult(input);
             mv.addObject("searchResult",searchResult);
@@ -49,6 +49,7 @@ public class DadosGovernamentaisController
         }
         else
         {
+            
             mv.addObject("rows", 0);
         } 
         
