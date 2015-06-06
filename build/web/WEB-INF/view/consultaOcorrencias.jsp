@@ -1,5 +1,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +20,7 @@
 
     <body>
         <div class='wrapper'>
-        <aside class='sidebar'>
+        <section class='sidebar'>
             <header class='title'>
              Dados Abertos Governamentais
             </header>
@@ -31,40 +33,33 @@
                 <li><a href="about.html">About</a></li>
             </ul>
             </nav>
-        </aside>
+        </section>
      <section class='content isOpen'>
             <h1>Consulta Ocorrências</h1>
-            <h2>Descubra a recorrência de cada natureza de despesa em um determinado tipo de licitação</h2>
-            <form action="" method="GET" name="consultaOcorrencia">
+            <aside><h2>Descubra a recorrência de cada natureza de despesa em um determinado tipo de licitação</h2></aside>
+            <form action="consultaOcorrencias.htm" method="GET" name="consultaOcorrencia">
                 <label for="tipoLicitacao">Tipo Licitação:<br>
-                <select for="consultaOcorrencia">
-                  <option value="licitacao2">Adiantamento</option>
-                  <option value="licitacao3">Contrato de Obras</option>
-                  <option value="licitacao4">Material Permanente</option>
-                  <option value="licitacao5">Contrato Outros</option>
-                  <option value="licitacao6">Contrado de Locação</option>
-                  <option value="licitacao7">Registro de Preços</option>
-                  <option value="licitacao8">Contratos de Fornecimento de Material</option>
-                  <option value="licitacao9">Contrato de Fornecimento de Serviços</option>
-                  <option value="licitacao10">Pessoal</option>
-                  <option value="licitacao11">Serviços/Outros</option>
-                  <option value="licitacao12">Material de Consumo</option>
-                  <option value="licitacao13">Contrato de Termo de Parceria</option>
+                <select for="consultaOcorrencia" name="tipoLicitacao">
+                   <c:forEach items="${listaLicitacoes}" var="licitacao">                  
+                     <option value="${licitacao.getDescricao()}">${licitacao.getDescricao()}</option>
+                  </c:forEach>
                 </select>
                 </label>
 
-                <button>Buscar</button>
+                <button type="submit">Buscar</button>
 
                 <table>
                     <tr>
                         <th>Natureza da Despesa</th>
                         <th>Ocorrências</th>
                     </tr>
-                    <tr>
-                        <td>Exemplo1</td>
-                        <td>Exemplo 2</td>
-                    </tr>
-                 <tr id="pieChartContainer" style="height:250px; max-width:250px; margin: auto"></tr>
+                    <c:forEach items="${listaOcorrencias}" var="result" >
+                        <tr>
+                            <td>${result.getNaturezaDespesa()}</td>
+                            <td>${result.getOcorrencias()}</td>
+                        </tr>
+                    </c:forEach>
+                        <tr><td id="pieChartContainer" style="height:250px; max-width:250px; margin: auto"></td></tr>
                 </table>
                 
             </form>

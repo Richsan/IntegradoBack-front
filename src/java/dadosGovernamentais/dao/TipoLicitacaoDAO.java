@@ -1,6 +1,6 @@
 package dadosGovernamentais.dao;
 
-import dadosGovernamentais.model.TipoLicitacao;
+import dadosGovernamentais.model.TipoLicitacaoBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,9 +16,9 @@ public class TipoLicitacaoDAO
         this.conn = conn;
     }
     
-    public List<TipoLicitacao> getListaLicitacoes()
+    public List<TipoLicitacaoBean> getListaLicitacoes()
     {
-        ArrayList<TipoLicitacao> lista = new ArrayList<>();
+        ArrayList<TipoLicitacaoBean> lista = new ArrayList<>();
         String sqlQuery = "SELECT * FROM tipolicitacao";
         
         PreparedStatement stmt = null;
@@ -31,7 +31,7 @@ public class TipoLicitacaoDAO
                         
             while(rs.next())
             {
-                TipoLicitacao licitacao = new TipoLicitacao();
+                TipoLicitacaoBean licitacao = new TipoLicitacaoBean();
                 licitacao.setId(rs.getInt("codigo"));
                 licitacao.setDescricao(rs.getString("descricao"));
                 lista.add(licitacao);

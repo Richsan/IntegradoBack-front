@@ -1,18 +1,18 @@
 package dadosGovernamentais.model;
 
 
-public class TipoLicitacao
+public class TipoLicitacaoBean
 {
 
        private String descricao;
        private int id;
 
-    public TipoLicitacao(String descricao, int id) {
+    public TipoLicitacaoBean(String descricao, int id) {
         this.descricao = descricao;
         this.id = id;
     }
     
-    public TipoLicitacao(){}
+    public TipoLicitacaoBean(){}
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;

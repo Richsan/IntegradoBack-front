@@ -1,11 +1,12 @@
-
 package dadosGovernamentais.controller;
 
+import dadosGovernamentais.dao.ConsultaOcorrenciasDAO;
 import dadosGovernamentais.dao.ConsultaValorDAO;
 import dadosGovernamentais.dao.TipoLicitacaoDAO;
+import dadosGovernamentais.model.ConsultaOcorrenciasBean;
 import dadosGovernamentais.model.ConsultaValorInputBean;
 import dadosGovernamentais.model.ConsultaValorOutputBean;
-import dadosGovernamentais.model.TipoLicitacao;
+import dadosGovernamentais.model.TipoLicitacaoBean;
 import dadosGovernamentais.servicos.ConnectionFactory;
 import static java.lang.Math.ceil;
 import java.sql.Connection;
@@ -24,9 +25,22 @@ public class DadosGovernamentaisController
     }
     
     @RequestMapping("/consultaOcorrencias")
-    public String consultaOcorrencias()
+    public ModelAndView consultaOcorrencias(String tipoLicitacao)
     {
-        return "consultaOcorrencias";
+        ModelAndView mv = new ModelAndView("consultaOcorrencias");
+        ConnectionFactory connFactory = new ConnectionFactory();
+        Connection conexao = connFactory.getConnection();
+        TipoLicitacaoDAO tipoLicitacaoDAO = new TipoLicitacaoDAO(conexao);
+        ConsultaOcorrenciasDAO dao = new ConsultaOcorrenciasDAO(conexao);
+        ArrayList<ConsultaOcorrenciasBean> occorencias = null;
+        if(tipoLicitacao != null)
+           occorencias = (ArrayList<ConsultaOcorrenciasBean>)dao.getSearchResult(tipoLicitacao);
+        ArrayList<TipoLicitacaoBean> listaLicitacoes = (ArrayList<TipoLicitacaoBean>)tipoLicitacaoDAO.getListaLicitacoes();
+        connFactory.closeConnection();
+        mv.addObject("listaLicitacoes", listaLicitacoes);
+        mv.addObject("listaOcorrencias", occorencias);
+        
+        return mv;
     }
     
        
@@ -39,9 +53,9 @@ public class DadosGovernamentaisController
         Connection conexao = connFactory.getConnection();
         ConsultaValorDAO dao = new ConsultaValorDAO(conexao);
         TipoLicitacaoDAO tipoLicitacaoDAO = new TipoLicitacaoDAO(conexao);
-        ArrayList<TipoLicitacao> listaLicitacoes = (ArrayList<TipoLicitacao>)tipoLicitacaoDAO.getListaLicitacoes();
-       ;
-        if(input.getTipoLicitacao() != "")
+        ArrayList<TipoLicitacaoBean> listaLicitacoes = (ArrayList<TipoLicitacaoBean>)tipoLicitacaoDAO.getListaLicitacoes();
+        
+        if(!"".equals(input.getTipoLicitacao()))
         {   
             ArrayList<ConsultaValorOutputBean> searchResult = (ArrayList<ConsultaValorOutputBean>)dao.getSearchResult(input);
             mv.addObject("searchResult",searchResult);

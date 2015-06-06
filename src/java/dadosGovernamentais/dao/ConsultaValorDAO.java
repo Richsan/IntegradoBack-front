@@ -45,7 +45,6 @@ public class ConsultaValorDAO
                             tableRow.setMes(rs.getInt("mes"));
                             tableRow.setValor(rs.getDouble("valor"));
                             tableRow.setNaturezaDespesa(rs.getString("descricaonatureza"));
-                            
                             lista.add(tableRow);
                             
                         }                      
