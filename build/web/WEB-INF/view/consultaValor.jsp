@@ -13,15 +13,14 @@
         <link rel="stylesheet" type="text/css" href="resources/style.css">
         <link rel="stylesheet" type="text/css" href="resources/form.css">
 
-      <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
-      <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-      <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-      <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+      <script src='resources/jquery.js'></script>
+      <link rel="stylesheet" href="resources/jquery-ui.css">
+      <script src="resources/jquery-1.10.2.js"></script>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+      <script src="resources/jquery-ui.js"></script>
+      
+
       <script src="resources/valForm.js"></script>
-
-
-
-
     </head>
 
     <body>
@@ -33,17 +32,17 @@
             <nav>
             <ul class='nav'>
                 <li><a href="index.htm">Home</a></li>
-                <li><a class='active'>Consulta Valor</a></li>
-                <li><a href="consultaOcorrencias.html">Consulta Ocorrências</a></li>
-                <li><a href="help.html">Help</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a class='active'>Consulta de Natureza das Depesas</a></li>
+                <li><a href="consultaOcorrencias.html">Consulta de Ocorrências das Licitações</a></li>
+                <li><a href="help.html">Ajuda</a></li>
+                <li><a href="about.html">Sobre</a></li>
             </ul>
             </nav>
         </aside>
         <section class='content isOpen'>
-            <aside id="alerta1" style="color: red; visibility:hidden">Preencha os campos destacados em vermelho!</aside>
-            <aside id="alerta2" style="color: orange; visibility: hidden">Valores devem ser informados no formato R$ 00,00</aside>
-            <h1>Consulta Valor</h1>
+            <aside id="alerta1"><img src="resources/alertaIcon.png" /> Preencha os campos destacados em vermelho!</aside>
+            <aside id="alerta2"><img src="resources/alertaIcon.png" /> Valores devem ser informados no formato R$ 00,00</aside>
+            <h1>Consulta de Natureza das Depesas</h1>
             <aside><h2>Busque todas as naturezas de despesa de uma licitação através de valor máximo, mínimo e data</h2>
                 <br/>OBS: Todos os campos são de preenchimento obrigatório.</aside>
             <form id="formulario" action="consultaValor.htm" method="get" name="consultaValor">

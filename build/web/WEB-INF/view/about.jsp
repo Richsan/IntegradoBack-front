@@ -17,10 +17,10 @@
 
             <ul class='nav'>
                 <li><a href="index.htm">Home</a></li>
-                <li><a href="consultaValor.html">Consulta Valor</a></li>
-                <li><a href="consultaOcorrencias.html">Consulta Ocorrências</a></li>
-                <li><a href="help.html">Help</a></li>
-                <li><a class='active'>About</a></li>
+                <li><a href="consultaValor.html">Consulta de Natureza das Depesas</a></li>
+                <li><a href="consultaOcorrencias.html">Consulta de Ocorrências das Licitações</a></li>
+                <li><a href="help.html">Ajuda</a></li>
+                <li><a class='active'>Sobre</a></li>
             </ul>
         </div>
         <div class="content isOpen">
@@ -32,6 +32,6 @@
         </div>
         </div>
 
-      <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+      <script src='resources/jquery.js'></script>
     </body>
 </html>

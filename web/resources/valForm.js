@@ -28,17 +28,22 @@ var evalEmptyFields = function(form)
 	if(form.valorMin.value == "")
 	{
 		$("label[for='valorMin']").css('color','red');
+                if($("label[for='valorMax']").get(0).style.color != "orange")
+                    $("#alerta2").css('visibility', 'hidden');
+                    
 		flag = false;
 	}
-	else
+	else if($("label[for='valorMin']").get(0).style.color != "orange")
 		$("label[for='valorMin']").css('color','#333');
 
 	if(form.valorMax.value == "")
 	{
 		$("label[for='valorMax']").css('color','red');
+                if($("label[for='valorMin']").get(0).style.color != "orange")
+                    $("#alerta2").css('visibility', 'hidden');
 		flag = false;
 	}
-	else
+	else if($("label[for='valorMax']").get(0).style.color != "orange")
 		$("label[for='valorMax']").css('color','#333');
 
 	if(form.dataInicio.value == "")
@@ -78,24 +83,20 @@ var evalEmptyFields = function(form)
 var evalContentFields = function(form)
 {
 	var regexp = /R\$\s\d+,\d\d/;
-
-	if(regexp.test(form.valorMin.value))
-	{
-		if(regexp.test(form.valorMax.value))
-			return true;
-		else
-		{
-			$("label[for='valorMax']").css('color','orange');
-			$("#alerta2").css('visibility', 'visible');
-			return false;
-		}
-	}
-	else
+        var flag = true;
+	if(!regexp.test(form.valorMin.value))
 	{
 		$("label[for='valorMin']").css('color','orange');
 		$("#alerta2").css('visibility', 'visible');
-		return false;
+		flag= false;
 	}
+        if(!regexp.test(form.valorMax.value))
+	{
+		$("label[for='valorMax']").css('color','orange');
+		$("#alerta2").css('visibility', 'visible');
+		flag= false;
+	}
+        return flag;
 	
 };
 var validaValorForm = function(event)
@@ -115,11 +116,8 @@ var validaValorForm = function(event)
 
 	flag = evalEmptyFields(form);
 
-
 	 if(flag && evalContentFields(form))
          {  
-             
-             
              form.valorMin.value = form.valorMin.value.substring(3).replace(",",".");
              form.valorMax.value = form.valorMax.value.substring(3).replace(",",".");
              form.submit();

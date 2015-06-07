@@ -6,11 +6,11 @@ form
 
 form input[type="text"], form select
 {
-	width: 80px;
+	width: 90px;
 	height: 25px;
 	font-size: 16px;
 
-	 border-radius:4px;
+    border-radius:4px;
     -moz-border-radius:4px;
     -webkit-border-radius:4px;
     box-shadow: 2px 2px 4px #333333;    
@@ -19,6 +19,33 @@ form input[type="text"], form select
     background: #eee; 
     border:2px solid #000000;
 
+}
+#alerta2
+{
+    border:1px solid #000000;
+    font-size: 16px;
+    color: orange;
+    background-color: rgb(242, 232, 222);
+    visibility: hidden;
+     border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+}
+#alerta1
+{
+    border:1px solid #000000;
+    font-size: 16px;
+    color: red;
+    background-color: rgb(242, 222, 222);;
+    visibility: hidden;
+     border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+}
+#alerta1 img, #alerta2 img
+{
+    width: 15px;
+    height: 15px;
 }
 
 form #dataFim, form #dataInicio
@@ -40,7 +67,7 @@ form select
 {
 	width: 150px;
 	height: 25px;
-	margin-top: 1.27%;
+	margin-top: 1.4%;
 	float: left;
 	cursor: pointer;
 }
