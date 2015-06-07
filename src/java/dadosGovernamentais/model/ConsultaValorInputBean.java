@@ -9,25 +9,25 @@ public class ConsultaValorInputBean
 
 
     public ConsultaValorInputBean(String tipoLicitacao, Double valorMin,
-            Double valorMax, Calendar dtInicio, Calendar dtFim) {
+            Double valorMax, Integer dataInicio, Integer dataFim) {
         this.tipoLicitacao = tipoLicitacao;
         this.valorMin = valorMin;
         this.valorMax = valorMax;
-        this.dtInicio = dtInicio;
-        this.dtFim = dtFim;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
         this.page = 0;
     }
     public ConsultaValorInputBean()
     {
         this.valorMin = null;
         this.valorMax = null;
-        this.dtInicio = null;
-        this.dtFim = null;
+        this.dataInicio = null;
+        this.dataFim = null;
         this.tipoLicitacao = "";
     }
     private Integer  page;
     private Double valorMin, valorMax;
-    private Calendar dtInicio, dtFim;
+    private Integer dataInicio, dataFim;
     private String tipoLicitacao;
 
    
@@ -81,21 +81,21 @@ public class ConsultaValorInputBean
         this.valorMax = valorMax;
     }
 
-    public Calendar getDtInicio() {
-        return dtInicio;
+    public Integer getDataInicio() {
+        return dataInicio;
     }
 
-    public void setDtInicio(Calendar dtInicio) {
-        this.dtInicio = dtInicio;
+    public void setDataInicio(Integer dataInicio) {
+        this.dataInicio = dataInicio;
     }
 
-    public Calendar getDtFim() {
-        return dtFim;
+    public Integer getDataFim() {
+        return dataFim;
     }
 
    
-    public void setDtFim(Calendar dtFim) {
-        this.dtFim = dtFim;
+    public void setDataFim(Integer dataFim) {
+        this.dataFim = dataFim;
     }
 
     /**

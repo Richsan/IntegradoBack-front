@@ -39,16 +39,25 @@
             <aside><h2>Descubra a recorrência de cada natureza de despesa em um determinado tipo de licitação</h2></aside>
             <form action="consultaOcorrencias.htm" method="GET" name="consultaOcorrencia">
                 <label for="tipoLicitacao">Tipo Licitação:<br>
-                <select for="consultaOcorrencia" name="tipoLicitacao">
-                   <c:forEach items="${listaLicitacoes}" var="licitacao">                  
-                     <option value="${licitacao.getDescricao()}">${licitacao.getDescricao()}</option>
+                <select for="consultaOcorrencia" name="tipoLicitacao" title="${param.tipoLicitacao}">
+                   <c:forEach items="${listaLicitacoes}" var="licitacao">
+                       <c:set value="${licitacao.getDescricao()}" var="l" />
+                        <c:set value="${param.tipoLicitacao}" var="p" />
+                         <c:choose>
+                         <c:when test="${p eq l}" >
+                            <option value="${licitacao.getDescricao()}" selected>${licitacao.getDescricao()}</option>
+                         </c:when>
+                         <c:otherwise>
+                            <option value="${licitacao.getDescricao()}">${licitacao.getDescricao()}</option>
+                         </c:otherwise>
+                         </c:choose>
                   </c:forEach>
                 </select>
                 </label>
 
                 <button type="submit">Buscar</button>
 
-                <table>
+                <table id="OcorrenciaTable">
                     <tr>
                         <th>Natureza da Despesa</th>
                         <th>Ocorrências</th>
@@ -59,7 +68,7 @@
                             <td>${result.getOcorrencias()}</td>
                         </tr>
                     </c:forEach>
-                        <tr><td id="pieChartContainer" style="height:250px; max-width:250px; margin: auto"></td></tr>
+                        <tr><td id="pieChartContainer" colspan="2" style="height: 350px;  margin: auto"></td></tr>
                 </table>
                 
             </form>

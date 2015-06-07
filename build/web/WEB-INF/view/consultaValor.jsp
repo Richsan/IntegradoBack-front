@@ -19,12 +19,7 @@
       <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
       <script src="resources/valForm.js"></script>
 
-  <script>
-  $(function() {
-    $( "#dataInicio, #dataFim" ).datepicker();
 
-  });
-  </script>
 
 
     </head>
@@ -49,12 +44,22 @@
             <aside id="alerta1" style="color: red; visibility:hidden">Preencha os campos destacados em vermelho!</aside>
             <aside id="alerta2" style="color: orange; visibility: hidden">Valores devem ser informados no formato R$ 00,00</aside>
             <h1>Consulta Valor</h1>
-            <h2>Busque todas as naturezas de despesa de uma licitação através de valor máximo, mínimo e data</h2>
+            <aside><h2>Busque todas as naturezas de despesa de uma licitação através de valor máximo, mínimo e data</h2>
+                <br/>OBS: Todos os campos são de preenchimento obrigatório.</aside>
             <form id="formulario" action="consultaValor.htm" method="get" name="consultaValor">
-                <select for="consultaValor" name="tipoLicitacao">
+                <select for="consultaValor" name="tipoLicitacao" title="${param.tipoLicitacao}">
                   <option value="empty">Tipo de Licitacao</option>
                   <c:forEach items="${listaLicitacoes}" var="licitacao">                  
-                     <option value="${licitacao.getDescricao()}">${licitacao.getDescricao()}</option>
+                     <c:set value="${licitacao.getDescricao()}" var="l" />
+                        <c:set value="${param.tipoLicitacao}" var="p" />
+                         <c:choose>
+                         <c:when test="${p eq l}" >
+                            <option value="${licitacao.getDescricao()}" selected>${licitacao.getDescricao()}</option>
+                         </c:when>
+                         <c:otherwise>
+                            <option value="${licitacao.getDescricao()}">${licitacao.getDescricao()}</option>
+                         </c:otherwise>
+                         </c:choose>
                   </c:forEach>
                 </select>
 
@@ -62,8 +67,8 @@
 
                 <label for="valorMax">Valor max: <br><input type="text" name="valorMax" id="valorMax" placeholder="R$ 0,00" value="${getInput.getValorMaxString()}"/></label>
 
-                <label for="dataInicio">Data de início: <br><input type="text" name="dataInicio" id="dataInicio" placeholder="dd/mm/aaaa"/></label>
-                <label for="dataFim">Data limite: <br><input type="text" name="dataFim" id="dataFim" placeholder="dd/mm/aaaa"/></label>
+                <label for="dataInicio">Ano de início: <br><input type="text" name="dataInicio" id="dataInicio" placeholder="yyyy" class="date-picker-year" value="${param.dataInicio}"/></label>
+                <label for="dataFim">Ano limite: <br><input type="text" name="dataFim" id="dataFim" placeholder="yyyy" class="date-picker-year" value="${param.dataFim}" /></label>
 
                 <button type="submit">Buscar</button>
 
@@ -79,7 +84,7 @@
                         <tr>
                             <td>${result.getNaturezaDespesa()}</td>
                             <td>${result.getValor()}</td>
-                            <td>${result.getMes()}</td>
+                            <td>${result.getNomeMes()}</td>
                             <td>${result.getAno()}</td>
                         </tr>
                     </c:forEach>

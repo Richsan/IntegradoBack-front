@@ -17,6 +17,8 @@ public class ConsultaValorOutputBean
     private String naturezaDespesa;
     private double valor;
     private int mes, ano;
+    private static String mesNome[] = {"janeiro","Fevereiro", "Março", "Abril",
+    "Maio", "Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"};
 
     public String getNaturezaDespesa() {
         return naturezaDespesa;
@@ -36,6 +38,11 @@ public class ConsultaValorOutputBean
 
     public int getMes() {
         return mes;
+    }
+    
+    public String getNomeMes()
+    {
+        return mesNome[mes-1];
     }
 
     public void setMes(int mes) {
