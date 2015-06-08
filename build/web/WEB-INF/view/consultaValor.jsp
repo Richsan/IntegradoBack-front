@@ -39,12 +39,14 @@
             </nav>
         </aside>
         <section class='content isOpen'>
-            <aside id="alerta1"><img src="resources/alertaIcon.png" /> Preencha os campos destacados em vermelho!</aside>
-            <aside id="alerta2"><img src="resources/alertaIcon.png" /> Valores devem ser informados no formato R$ 00,00</aside>
             <h1>Natureza das Depesas</h1>
             <aside><h2>Busque todas as naturezas de despesa de uma licitação através de valor máximo, mínimo e data</h2>
                 <br/>OBS: Todos os campos são de preenchimento obrigatório.</aside>
-            <form id="formulario" action="consultaValor.htm" method="get" name="consultaValor">
+            
+			<aside id="alerta1"><img src="resources/alertaIcon.png" /> Preencha os campos destacados em vermelho!</aside>
+            <aside id="alerta2"><img src="resources/alertaIcon.png" /> Valores devem ser informados no formato R$ 00,00</aside>
+			
+			<form id="formulario" action="consultaValor.htm" method="get" name="consultaValor">
                 <select for="consultaValor" name="tipoLicitacao" title="${param.tipoLicitacao}">
                   <option value="empty">Tipo de Licitacao</option>
                   <c:forEach items="${listaLicitacoes}" var="licitacao">                  
