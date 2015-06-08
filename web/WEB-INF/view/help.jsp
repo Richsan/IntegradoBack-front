@@ -23,7 +23,7 @@
             </ul>
         </div>
         <div class='content isOpen'>
-            <h1> Click <a href="Http://www.google.com/"> here </a>
+            <h1>Clique <a href="Http://www.google.com/" target="_blank">aqui</a>.</h1>
        </div>
        </div>
 

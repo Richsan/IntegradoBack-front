@@ -26,7 +26,7 @@
             </ul>
         </div>
         <div class='content isOpen'>
-            <h1>Consultas de Dados Abertos Governamentais</h1>
+            <h1>Dados Abertos Governamentais</h1>
             <h2>Website para consulta e análise de dados abertos do governo para a cidade de Campinas. As consultas <br>são relativas a licitações e
              naturezas de despesa.</h2>
        </div>
