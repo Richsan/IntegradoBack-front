@@ -37,7 +37,7 @@ public class ConsultaValorDAO
                             stmt.setInt(1,1);
                         stmt.setInt(2,7);
                         stmt.setString(3, consulta.getTipoLicitacao());
-                        stmt.setString(4, "20[0-1][1-5]");
+                        stmt.setString(4, getAnoRegex(consulta));
                         stmt.setString(5, "[0-9][0-9][0-9][0-9].[0-9][0-9]");
 			rs = stmt.executeQuery();
                         
@@ -77,10 +77,7 @@ public class ConsultaValorDAO
                 stmt.setInt(1, 2);
                 stmt.setInt(2, 0);
                 stmt.setString(3, consulta.getTipoLicitacao());
-               //stmt.setString(4, "20[0-1][1-5]");
-				String regex = new String(getAnoRegex(consulta));
-				System.out.println(">>>>> " + regex + " <<<<<");
-				stmt.setString(4, regex);
+                stmt.setString(4, getAnoRegex(consulta));
                 stmt.setString(5, "[0-9][0-9][0-9][0-9].[0-9][0-9]");
                 rs = stmt.executeQuery();
                 if(rs.next())
@@ -106,7 +103,18 @@ public class ConsultaValorDAO
 	
 	private String getAnoRegex(ConsultaValorInputBean consulta)
 	{
-		PythonInterpreter pyInterp = new PythonInterpreter();
+		PyObject result = regex_for_rage.__call__(new PyInteger(consulta.getDataInicio()),
+												  new PyInteger(consulta.getDataFim()));
+		String regEx = (String) result.__tojava__(String.class);
+		
+		return regEx;
+	}
+	
+	static PythonInterpreter pyInterp = null;
+	static PyObject regex_for_rage = null;
+	static
+	{
+		pyInterp = new PythonInterpreter();
 
 		// https://github.com/dimka665/range-regex
 		pyInterp.exec(""
@@ -220,11 +228,6 @@ public class ConsultaValorDAO
 			"\n" +
 			"    return pattern");
 		// execute a function that takes a string and returns a string
-		PyObject regex_for_rage = pyInterp.get("regex_for_range");
-		PyObject result = regex_for_rage.__call__(new PyInteger(consulta.getDataInicio()),
-												  new PyInteger(consulta.getDataFim()));
-		String regEx = (String) result.__tojava__(String.class);
-		
-		return regEx;
+		regex_for_rage = pyInterp.get("regex_for_range");
 	}
 }
