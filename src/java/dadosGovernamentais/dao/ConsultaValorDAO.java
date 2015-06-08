@@ -61,7 +61,8 @@ public class ConsultaValorDAO
        
         return lista;
     }
-    public int getSerachLines(ConsultaValorInputBean consulta)
+
+    public int getSearchLines(ConsultaValorInputBean consulta)
     {
          String sqlQuery = "SELECT count(*) AS qtde FROM ConsultaValor(?,?,?,?,?)";
         
