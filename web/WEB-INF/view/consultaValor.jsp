@@ -32,8 +32,8 @@
             <nav>
             <ul class='nav'>
                 <li><a href="index.htm">Home</a></li>
-                <li><a class='active'>Consulta de Natureza das Depesas</a></li>
-                <li><a href="consultaOcorrencias.html">Consulta de Ocorrências das Licitações</a></li>
+                <li><a class='active'>Natureza das Depesas</a></li>
+                <li><a href="consultaOcorrencias.html">Ocorrências das Licitações</a></li>
                 <li><a href="help.html">Ajuda</a></li>
                 <li><a href="about.html">Sobre</a></li>
             </ul>
@@ -42,7 +42,7 @@
         <section class='content isOpen'>
             <aside id="alerta1"><img src="resources/alertaIcon.png" /> Preencha os campos destacados em vermelho!</aside>
             <aside id="alerta2"><img src="resources/alertaIcon.png" /> Valores devem ser informados no formato R$ 00,00</aside>
-            <h1>Consulta de Natureza das Depesas</h1>
+            <h1>Natureza das Depesas</h1>
             <aside><h2>Busque todas as naturezas de despesa de uma licitação através de valor máximo, mínimo e data</h2>
                 <br/>OBS: Todos os campos são de preenchimento obrigatório.</aside>
             <form id="formulario" action="consultaValor.htm" method="get" name="consultaValor">

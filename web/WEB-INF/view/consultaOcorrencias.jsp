@@ -28,15 +28,15 @@
             <nav>
             <ul class='nav'>
                 <li><a href="index.htm">Home</a></li>
-                <li><a href="consultaValor.html">Consulta de Natureza das Depesas</a></li>
-                <li><a class="active">Consulta de Ocorrências das Licitações</a></li>
+                <li><a href="consultaValor.html">Natureza das Depesas</a></li>
+                <li><a class="active">Ocorrências das Licitações</a></li>
                 <li><a href="help.html">Ajuda</a></li>
                 <li><a href="about.html">Sobre</a></li>
             </ul>
             </nav>
         </section>
      <section class='content isOpen'>
-            <h1>Consulta de Ocorrências das Licitações</h1>
+            <h1>Ocorrências das Licitações</h1>
             <aside><h2>Descubra a recorrência de cada natureza de despesa em um determinado tipo de licitação</h2></aside>
             <form action="consultaOcorrencias.htm" method="GET" name="consultaOcorrencia">
                 <label for="tipoLicitacao">Tipo Licitação:<br>
