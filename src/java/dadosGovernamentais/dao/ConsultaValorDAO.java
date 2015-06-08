@@ -38,7 +38,8 @@ public class ConsultaValorDAO
                         stmt.setInt(2,7);
                         stmt.setString(3, consulta.getTipoLicitacao());
                         stmt.setString(4, getAnoRegex(consulta));
-                        stmt.setString(5, "[0-9][0-9][0-9][0-9].[0-9][0-9]");
+                        stmt.setString(5, "^(" + getValorRegex(consulta) + ")\\.\\d\\d");
+						System.out.println(getValorRegex(consulta));
 			rs = stmt.executeQuery();
                         
                         while(rs.next())
@@ -78,7 +79,7 @@ public class ConsultaValorDAO
                 stmt.setInt(2, 0);
                 stmt.setString(3, consulta.getTipoLicitacao());
                 stmt.setString(4, getAnoRegex(consulta));
-                stmt.setString(5, "[0-9][0-9][0-9][0-9].[0-9][0-9]");
+                stmt.setString(5, "^(" + getValorRegex(consulta) + ")\\.\\d\\d");
                 rs = stmt.executeQuery();
                 if(rs.next())
                 {
@@ -98,8 +99,14 @@ public class ConsultaValorDAO
         return nrows;            
     }
 	
-	
-	
+	private String getValorRegex(ConsultaValorInputBean consulta)
+	{
+		PyObject result = regex_for_rage.__call__(new PyInteger(consulta.getValorMin().intValue()),
+												  new PyInteger(consulta.getValorMax().intValue()));
+		String regEx = (String) result.__tojava__(String.class);
+		
+		return regEx;
+	}
 	
 	private String getAnoRegex(ConsultaValorInputBean consulta)
 	{
