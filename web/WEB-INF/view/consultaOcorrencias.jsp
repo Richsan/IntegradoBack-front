@@ -28,9 +28,8 @@
             <nav>
             <ul class='nav'>
                 <li><a href="index.htm">Home</a></li>
-                <li><a href="consultaValor.html">Consulta de Natureza das Depesas</a></li>
-                <li><a class="active">Consulta de Ocorrências das Licitações</a></li>
-                <li><a href="help.html">Ajuda</a></li>
+                <li><a href="consultaValor.html">Natureza das Depesas</a></li>
+                <li><a class="active">Ocorrências das Licitações</a></li>
                 <li><a href="about.html">Sobre</a></li>
             </ul>
             </nav>
