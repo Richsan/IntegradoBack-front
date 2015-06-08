@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Administrator/Desktop/Projetos/GitHub/IntegradoBack-front/web/WEB-INF/view/consultaOcorrencias.jsp</file>
+            <file>file:/C:/Users/Administrator/Desktop/Projetos/GitHub/IntegradoBack-front/src/java/dadosGovernamentais/dao/ConsultaValorDAO.java</file>
+            <file>file:/C:/Users/Administrator/Desktop/Projetos/GitHub/IntegradoBack-front/src/java/dadosGovernamentais/model/ConsultaValorInputBean.java</file>
+            <file>file:/C:/Users/Administrator/Desktop/Projetos/GitHub/IntegradoBack-front/web/resources/valForm.js</file>
+            <file>file:/C:/Users/Administrator/Desktop/Projetos/GitHub/IntegradoBack-front/src/java/dadosGovernamentais/servicos/ConnectionFactory.java</file>
+            <file>file:/C:/Users/Administrator/Desktop/Projetos/GitHub/IntegradoBack-front/web/WEB-INF/view/consultaValor.jsp</file>
+        </group>
     </open-files>
 </project-private>
