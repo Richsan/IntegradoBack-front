@@ -1,7 +1,12 @@
-var keyAscii = {"0":48, "9":57, ",":44};
+var keyAscii = {"0":48, "9":57, ",":44, "backspace":8, ".":46};
 
 var  digitaEvento = function(event)
 {
+       var regexp = /,/;
+       
+       if(event.keyCode == keyAscii["."])
+           event.keyCode = keyAscii["."];
+       
 	if(event.keyCode < keyAscii["0"] || event.keyCode > keyAscii["9"])
 	{
 		if(this.value == "")
@@ -15,6 +20,11 @@ var  digitaEvento = function(event)
 			event.preventDefault();
 			return;
 		}
+                if(event.keycode != keyAscii[","] && regexp.test(this.value))
+                {
+                    event.preventDefault();
+                    return;
+                }
 	}
 
 	if(this.value == "")
@@ -50,7 +60,8 @@ var up = function()
         this.setSelectionRange(this.value.length -3,this.value.length -3);
     }
     
-}
+    
+};
 
 var evalEmptyFields = function(form)
 {
@@ -110,6 +121,15 @@ var evalEmptyFields = function(form)
 	return flag;
 };
 
+var focusFunc = function()
+{
+  var regexp = /,\d$/;
+  if(regexp.test(this.value))
+  {
+      this.value = this.value + "0";
+  }  
+};
+
 var evalContentFields = function(form)
 {
 	var regexp = /R\$\s\d+,\d\d/;
@@ -164,6 +184,8 @@ $(document).ready(function()
 	$("#valorMax").keydown(backspaceDetect.bind($("#valorMax").get( 0 )));
         $("#valorMin").keyup(up.bind($("#valorMin").get( 0 )));
 	$("#valorMax").keyup(up.bind($("#valorMax").get( 0 )));
+        $("#valorMin").focusout(focusFunc.bind($("#valorMin").get( 0 )));
+	$("#valorMax").focusout(focusFunc.bind($("#valorMax").get( 0 )));
 	$("#dataInicio").keypress(function(evt){evt.preventDefault();});
 	$("#dataFim").keypress(function(evt){evt.preventDefault();});
 	$("button").click(validaValorForm);
