@@ -16,11 +16,41 @@ var  digitaEvento = function(event)
 			return;
 		}
 	}
-	console.log(this.value);
 
 	if(this.value == "")
 		this.value = "R$ ";
+        
 };
+
+var backspaceDetect = function() {
+    var regexp = /^R\$\s\d$/;
+    var key = event.keyCode || event.charCode;
+    var backspace = 8;
+    var deletekey = 46;
+    
+    if( key == backspace || key == deletekey)
+    {
+        if(regexp.test(this.value))
+        this.value = "";
+    }
+    
+};      
+
+var up = function()
+{
+    var regexp = /R\$\s/;
+    var regexp2 = /,/;
+  
+    if(!regexp.test(this.value))
+        this.value = "";
+    
+    if(!regexp2.test(this.value) && this.value != "")
+    {
+        this.value = this.value + ",00";
+        this.setSelectionRange(this.value.length -3,this.value.length -3);
+    }
+    
+}
 
 var evalEmptyFields = function(form)
 {
@@ -130,6 +160,10 @@ $(document).ready(function()
 {
 	$("#valorMin").keypress(digitaEvento.bind($("#valorMin").get( 0 )));
 	$("#valorMax").keypress(digitaEvento.bind($("#valorMax").get( 0 )));
+        $("#valorMin").keydown(backspaceDetect.bind($("#valorMin").get( 0 )));
+	$("#valorMax").keydown(backspaceDetect.bind($("#valorMax").get( 0 )));
+        $("#valorMin").keyup(up.bind($("#valorMin").get( 0 )));
+	$("#valorMax").keyup(up.bind($("#valorMax").get( 0 )));
 	$("#dataInicio").keypress(function(evt){evt.preventDefault();});
 	$("#dataFim").keypress(function(evt){evt.preventDefault();});
 	$("button").click(validaValorForm);
