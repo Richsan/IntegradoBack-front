@@ -59,7 +59,7 @@ public class DadosGovernamentaisController
         {   
             ArrayList<ConsultaValorOutputBean> searchResult = (ArrayList<ConsultaValorOutputBean>)dao.getSearchResult(input);
             mv.addObject("searchResult",searchResult);
-            mv.addObject("rows", (int)ceil(dao.getSearchLines(input)/7.0));
+            mv.addObject("rows", (int)ceil(dao.getSearchLines(input)/9.0));
         }
         else
         {

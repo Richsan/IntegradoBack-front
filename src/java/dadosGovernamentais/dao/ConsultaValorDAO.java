@@ -35,7 +35,7 @@ public class ConsultaValorDAO
                             stmt.setInt(1, consulta.getPage());
                         else
                             stmt.setInt(1,1);
-                        stmt.setInt(2,7);
+                        stmt.setInt(2,9);
                         stmt.setString(3, consulta.getTipoLicitacao());
                         stmt.setString(4, getAnoRegex(consulta));
                         stmt.setString(5, "^(" + getValorRegex(consulta) + ")\\.\\d\\d");
