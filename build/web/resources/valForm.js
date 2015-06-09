@@ -1,7 +1,12 @@
-var keyAscii = {"0":48, "9":57, ",":44};
+var keyAscii = {"0":48, "9":57, ",":44, "backspace":8, ".":46};
 
 var  digitaEvento = function(event)
 {
+       var regexp = /,/;
+       
+       if(event.keyCode == keyAscii["."])
+           event.keyCode = keyAscii["."];
+       
 	if(event.keyCode < keyAscii["0"] || event.keyCode > keyAscii["9"])
 	{
 		if(this.value == "")
@@ -15,6 +20,11 @@ var  digitaEvento = function(event)
 			event.preventDefault();
 			return;
 		}
+                if(event.keycode != keyAscii[","] && regexp.test(this.value))
+                {
+                    event.preventDefault();
+                    return;
+                }
 	}
 
 	if(this.value == "")
@@ -40,6 +50,8 @@ var up = function()
 {
     var regexp = /R\$\s/;
     var regexp2 = /,/;
+    var regexp3 = /,0$/;
+    var regexp4 = /,00$/;
   
     if(!regexp.test(this.value))
         this.value = "";
@@ -49,8 +61,17 @@ var up = function()
         this.value = this.value + ",00";
         this.setSelectionRange(this.value.length -3,this.value.length -3);
     }
+    if(regexp3.test(this.value))
+    {
+        this.value = this.value + "0";
+    }
+     if(!regexp4.test(this.value) && this.value != "")
+     {
+         this.value = this.value.substring(0,this.value.length - 4) + ",00";
+     }
     
-}
+    
+};
 
 var evalEmptyFields = function(form)
 {
@@ -110,6 +131,15 @@ var evalEmptyFields = function(form)
 	return flag;
 };
 
+var focusFunc = function()
+{
+  var regexp = /,\d$/;
+  if(regexp.test(this.value))
+  {
+      this.value = this.value + "0";
+  }  
+};
+
 var evalContentFields = function(form)
 {
 	var regexp = /R\$\s\d+,\d\d/;
@@ -126,6 +156,24 @@ var evalContentFields = function(form)
 		$("#alerta2").css('visibility', 'visible');
 		flag= false;
 	}
+        if(parseInt(form.dataInicio.value) > parseInt(form.dataFim.value))
+        {
+            
+            $("label[for='dataInicio']").css('color', 'orange');
+            $("label[for='dataFim']").css('color', 'orange');
+            $("#alerta2").html("<img src=\"resources/alertaIcon.png\" />Ano de início deve ser menor que ano limite!");
+            $("#alerta2").css('visibility','visible');
+            return false;
+        }
+        if(parseFloat(form.valorMin.value.substring(3).replace(",",".")) > parseFloat(form.valorMax.value.substring(3).replace(",",".")))
+        {
+            
+            $("label[for='valorMin']").css('color', 'orange');
+            $("label[for='valorMax']").css('color', 'orange');
+            $("#alerta2").html("<img src=\"resources/alertaIcon.png\" />Valor mínimo deve ser menor que valor máximo!");
+            $("#alerta2").css('visibility','visible');
+            return false;
+        }
         return flag;
 	
 };
@@ -164,6 +212,8 @@ $(document).ready(function()
 	$("#valorMax").keydown(backspaceDetect.bind($("#valorMax").get( 0 )));
         $("#valorMin").keyup(up.bind($("#valorMin").get( 0 )));
 	$("#valorMax").keyup(up.bind($("#valorMax").get( 0 )));
+        $("#valorMin").focusout(focusFunc.bind($("#valorMin").get( 0 )));
+	$("#valorMax").focusout(focusFunc.bind($("#valorMax").get( 0 )));
 	$("#dataInicio").keypress(function(evt){evt.preventDefault();});
 	$("#dataFim").keypress(function(evt){evt.preventDefault();});
 	$("button").click(validaValorForm);

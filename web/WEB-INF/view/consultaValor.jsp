@@ -71,27 +71,33 @@
                 <label for="dataFim">Ano limite: <br><input type="text" name="dataFim" id="dataFim" placeholder="yyyy" class="date-picker-year" value="${param.dataFim}" /></label>
 
                 <button type="submit">Buscar</button>
-
+                </form>
                 <table>
-                    <tr>
-                        <th>Natureza da Despesa</th>
-                        <th>Valor</th>
-                        <th>Mes</th>
-                        <th>Ano</th>
-                    </tr>
-                    
-                    <c:forEach items="${searchResult}" var="result" >
+                    <c:set value="${searchResult}" var="lista" />
+                    <c:choose>
+                    <c:when test="${not empty lista}" >
                         <tr>
-                            <td>${result.getNaturezaDespesa()}</td>
-                            <td>${result.getValor()}</td>
-                            <td>${result.getNomeMes()}</td>
-                            <td>${result.getAno()}</td>
+                            <th>Natureza da Despesa</th>
+                            <th>Valor</th>
+                            <th>Mes</th>
+                            <th>Ano</th>
                         </tr>
-                    </c:forEach>
-                    <pags:Paginacao npages="${rows}" start="${page}" />
+
+                        <c:forEach items="${searchResult}" var="result" >
+                            <tr>
+                                <td>${result.getNaturezaDespesa()}</td>
+                                <td>${result.getValor()}</td>
+                                <td>${result.getNomeMes()}</td>
+                               <td>${result.getAno()}</td>
+                            </tr>
+                        </c:forEach>
+                        <pags:Paginacao npages="${rows}" start="${page}" />
+                    </c:when>
+                    <c:otherwise>
+                      <tr style="font-size: 16px; font-weight: bold;"><td style="padding-left: 450px; padding-right: 400px;"> Sem Resultados </td></tr>
+                    </c:otherwise>
+                    </c:choose>
                 </table>
-                
-            </form>
        </section>
        </div>
     </body>
