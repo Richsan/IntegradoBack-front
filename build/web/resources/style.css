@@ -48,8 +48,6 @@ body {
 .content.isOpen {
   transform: translate3d(230px, 0, 0);
   max-width: 1119px;
-
-
 }
 
 .button {
@@ -159,14 +157,4 @@ table .pageRow td ul
     margin-top: 10px;
     text-align: center;
     
-}
-
-#alerta1
-{
-	margin-top: 10px;
-}
-
-#alerta2
-{
-	margin-top: 10px;
 }

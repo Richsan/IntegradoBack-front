@@ -1,6 +1,6 @@
 form
 {
-	margin-top: 2%;
+	margin-top: 10px;
 
 }
 
@@ -30,6 +30,7 @@ form input[type="text"], form select
      border-radius:4px;
     -moz-border-radius:4px;
     -webkit-border-radius:4px;
+	margin-top: 10px;
 }
 #alerta1
 {
@@ -41,6 +42,7 @@ form input[type="text"], form select
      border-radius:4px;
     -moz-border-radius:4px;
     -webkit-border-radius:4px;
+	margin-top: 10px;
 }
 #alerta1 img, #alerta2 img
 {
@@ -106,12 +108,10 @@ table
 	clear: both;
 	margin-top: 3%;
 	width: 100%;
-	height: 420px;
+	height: 100%;
+	overflow-y: scroll;
 }
-#OcorrenciaTable
-{
-    overflow-y: scroll;
-}
+
 th
 {
 	width: 35%;
