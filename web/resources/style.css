@@ -31,7 +31,7 @@ body {
 
 .sidebar {
   position: absolute;
-  width: 220px;
+  width: 230px;
 }
 
 .content {
@@ -46,8 +46,8 @@ body {
 }
 
 .content.isOpen {
-  transform: translate3d(220px, 0, 0);
-  max-width: 1080px;
+  transform: translate3d(230px, 0, 0);
+  max-width: 1119px;
 
 
 }
@@ -63,11 +63,13 @@ body {
 
 /* Demo Navigation */
 .title {
-  font-size: 12.8px;
-  line-height: 30px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-size: 13px;
+  line-height: 25px;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 7px;
+  letter-spacing: 5px;
   color: #eee;
   border-bottom: 1px solid #222;
   background: #2a2a2a;
@@ -157,4 +159,14 @@ table .pageRow td ul
     margin-top: 10px;
     text-align: center;
     
+}
+
+#alerta1
+{
+	margin-top: 10px;
+}
+
+#alerta2
+{
+	margin-top: 10px;
 }

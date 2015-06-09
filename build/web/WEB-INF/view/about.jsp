@@ -19,7 +19,6 @@
                 <li><a href="index.htm">Home</a></li>
                 <li><a href="consultaValor.html">Natureza das Depesas</a></li>
                 <li><a href="consultaOcorrencias.html">Ocorrências das Licitações</a></li>
-                <li><a href="help.html">Ajuda</a></li>
                 <li><a class='active'>Sobre</a></li>
             </ul>
         </div>
