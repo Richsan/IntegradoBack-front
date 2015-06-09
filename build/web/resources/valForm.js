@@ -50,6 +50,8 @@ var up = function()
 {
     var regexp = /R\$\s/;
     var regexp2 = /,/;
+    var regexp3 = /,0$/;
+    var regexp4 = /,00$/;
   
     if(!regexp.test(this.value))
         this.value = "";
@@ -59,6 +61,14 @@ var up = function()
         this.value = this.value + ",00";
         this.setSelectionRange(this.value.length -3,this.value.length -3);
     }
+    if(regexp3.test(this.value))
+    {
+        this.value = this.value + "0";
+    }
+     if(!regexp4.test(this.value) && this.value != "")
+     {
+         this.value = this.value.substring(0,this.value.length - 4) + ",00";
+     }
     
     
 };
@@ -146,6 +156,24 @@ var evalContentFields = function(form)
 		$("#alerta2").css('visibility', 'visible');
 		flag= false;
 	}
+        if(parseInt(form.dataInicio.value) > parseInt(form.dataFim.value))
+        {
+            
+            $("label[for='dataInicio']").css('color', 'orange');
+            $("label[for='dataFim']").css('color', 'orange');
+            $("#alerta2").html("<img src=\"resources/alertaIcon.png\" />Ano de início deve ser menor que ano limite!");
+            $("#alerta2").css('visibility','visible');
+            return false;
+        }
+        if(parseFloat(form.valorMin.value.substring(3).replace(",",".")) > parseFloat(form.valorMax.value.substring(3).replace(",",".")))
+        {
+            
+            $("label[for='valorMin']").css('color', 'orange');
+            $("label[for='valorMax']").css('color', 'orange');
+            $("#alerta2").html("<img src=\"resources/alertaIcon.png\" />Valor mínimo deve ser menor que valor máximo!");
+            $("#alerta2").css('visibility','visible');
+            return false;
+        }
         return flag;
 	
 };

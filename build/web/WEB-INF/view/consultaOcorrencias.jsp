@@ -57,22 +57,29 @@
                 </label>
 
                 <button type="submit">Buscar</button>
-
-                <table id="OcorrenciaTable">
-                    <tr>
-                        <th>Natureza da Despesa</th>
-                        <th>Ocorrências</th>
-                    </tr>
-                    <c:forEach items="${listaOcorrencias}" var="result" >
-                        <tr>
-                            <td>${result.getNaturezaDespesa()}</td>
-                            <td>${result.getOcorrencias()}</td>
-                        </tr>
-                    </c:forEach>
-                        <tr><td id="pieChartContainer" colspan="2" style="height: 350px;  margin: auto"></td></tr>
-                </table>
-                
             </form>
+                <table id="OcorrenciaTable">
+                <c:set value="${listaOcorrencias}" var="lista" />
+                <c:choose>
+                <c:when test="${not empty lista}" >
+                        <tr>
+                            <th>Natureza da Despesa</th>
+                            <th>Ocorrências</th>
+                        </tr>
+                        <c:forEach items="${listaOcorrencias}" var="result" >
+                            <tr>
+                                <td>${result.getNaturezaDespesa()}</td>
+                                <td>${result.getOcorrencias()}</td>
+                            </tr>
+                        </c:forEach>
+                            <td id="pieChartContainer" colspan="2" style="height: 350px;  margin: auto"></td></tr>
+                    
+                </c:when>
+                    <c:otherwise>
+                        <tr style="font-size: 16px; font-weight: bold;"><td style="padding-left: 450px; padding-right: 400px;"> Sem Resultados </td></tr>
+                    </c:otherwise>
+                </c:choose>
+                </table>
        </section>
              
        </div>
