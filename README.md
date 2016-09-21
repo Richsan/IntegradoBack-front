@@ -1,5 +1,5 @@
 # IntegradoBack-front
-Trabalho integrado para curso de Laboratorio de Bacno de Dados + Desenvolvimeno Wev + Engenharia de Software 2
+Trabalho integrado para curso de Laboratório de Banco de Dados + Desenvolvimeno Web + Engenharia de Software 2
 
 #SQL Procedures
 
